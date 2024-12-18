@@ -21,18 +21,18 @@ app.set('view engine', 'ejs');
 app.use('/api', CompromisoVI);
 
 
-const port = 3000;
+const port = 3004;
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
 
      setInterval(async () => {
-        const CompromisoVi = await fetch(`http://${servidor}:3000/api/CompromisosInsertados`);
+        const CompromisoVi = await fetch(`http://${servidor}:3004/api/CompromisosInsertados`);
         const Insertados = await CompromisoVi.json();
          console.log(Insertados[0]);
         for (let i = 0; i < Insertados.length; i++) {
             try {
-                Correo(Insertados[i].FechaInicio, Insertados[i].HoraInicio, Insertados[i].NombrePaciente, Insertados[i].NombreProfesional );
+                Correo(Insertados[i].FechaInicio, Insertados[i].HoraInicio, Insertados[i].NombrePaciente, Insertados[i].NombreProfesional, Insertados[i].CorreoPaciente  );
                 console.log(Insertados[i].IdCompromisoVI);
                 
             } catch (error) {
@@ -42,7 +42,7 @@ app.listen(port, () => {
         
         
 
-    }, 20000);
+    }, 10000);
 });
 
 

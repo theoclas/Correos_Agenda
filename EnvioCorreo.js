@@ -3,7 +3,7 @@
 // Correo() ;
 
 
-function Correo(Fecha, Hora, Paciente, Profecional , Correo) {
+function Correo(Fecha, Hora, Paciente, Profecional, mail ) {
     const nodemailer = require('nodemailer');
 
     var transporter = nodemailer.createTransport({
@@ -130,10 +130,10 @@ function Correo(Fecha, Hora, Paciente, Profecional , Correo) {
         </body>
         </html>
     `;
-
+console.log(mail);
     var mailOptions = {
         from: '"Clínica Colombiana de Implantes Dentales" <correomineria@ceere.net>',
-        to: Correo,
+        to: mail,
         subject: 'Recordatorio de citas',
         html: ContenidoHTMLDelCorreo
     };

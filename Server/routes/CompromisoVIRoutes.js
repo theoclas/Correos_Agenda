@@ -63,7 +63,7 @@ router.get('/CompromisosInsertados', async (req, res) => {
 
     try {
         const request = new Request(
-            `SELECT        TOP (200) IdCompromisoVI, EstadoEnviado, DocumentoPaciente, NombrePaciente, DocumentoProfesional, NombreProfesional, AliasProfesional, FechaInicio, FechaFin, HoraInicio, HoraFin
+            `SELECT        TOP (200) IdCompromisoVI, EstadoEnviado, DocumentoPaciente, NombrePaciente, DocumentoProfesional, NombreProfesional, AliasProfesional, FechaInicio, FechaFin, HoraInicio, HoraFin, CorreoPaciente
 FROM            [Cnsta API CompromisoVI Insertador]`,
             (err) => {
                 if (err) {
@@ -90,7 +90,8 @@ FROM            [Cnsta API CompromisoVI Insertador]`,
                 FechaInicio: columns[7].value,
                 FechaFin: columns[8].value,
                 HoraInicio: columns[9].value,
-                HoraFin: columns[10].value
+                HoraFin: columns[10].value,
+                CorreoPaciente: columns[11].value
             };
             resultados.push(hc);
         });
