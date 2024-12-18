@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border: 1px solid #f5c6c6;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .container::before {
+            content: '';
+            background-image: url('https://www.clinicacolombianadeimplantes.com/wp-content/uploads/2019/03/logo-clinica.png');
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .header {
+            background-color: #e57373;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 1;
+            position: relative;
+        }
+        .body {
+            padding: 15px;
+            color: #333333;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .body h2 {
+            color: #e57373;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .details {
+            margin: 15px 0;
+            text-align: left;
+        }
+        .details p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .details span {
+            font-weight: bold;
+            color: #e57373;
+        }
+        .footer {
+            background-color: #fdeaea;
+            text-align: center;
+            font-size: 12px;
+            padding: 10px;
+            color: #666666;
+            position: relative;
+            z-index: 1;
+        }
+        .footer a {
+            color: #e57373;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Cancelación de Cita Médica
+        </div>
+        <div class="body">
+            <h2>Hola [Nombre del Paciente],</h2>
+            <p>Lamentamos informarte que tu cita médica ha sido cancelada:</p>
+            <div class="details">
+                <p><span>Fecha:</span> [dd/mm/yyyy]</p>
+                <p><span>Hora:</span> [hh:mm]</p>
+                <p><span>Doctor:</span> [Nombre del Doctor]</p>
+                <p><span>Ubicación:</span> [Dirección de la Clínica]</p>
+            </div>
+            <p>Si necesitas programar una nueva cita, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte.</p>
+        </div>
+        <div class="footer">
+            <p>Disculpa las molestias ocasionadas.</p>
+            <p><a href="tel:+1234567890">Llámanos</a> | <a href="mailto:contacto@clinica.com">contacto@clinica.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
