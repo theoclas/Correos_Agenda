@@ -34,7 +34,14 @@ app.listen(port, () => {
             try {
                 Correo(Insertados[i].FechaInicio, Insertados[i].HoraInicio, Insertados[i].NombrePaciente, Insertados[i].NombreProfesional, Insertados[i].CorreoPaciente  );
                 console.log(Insertados[i].IdCompromisoVI);
-                
+                const ActualizarCompromisoInsertado = await fetch(`http://${servidor}:3004/api/Actualizarinsertado/${Insertados[i].IdCompromisoVI}`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                    }
+                )
+                const respuestaActualizar = await ActualizarCompromisoInsertado.json();
+                console.log(respuestaActualizar);
             } catch (error) {
                 
             }
