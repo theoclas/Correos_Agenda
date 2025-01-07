@@ -1,0 +1,13 @@
+SMTP SERVE
+smtp.gmail.com
+
+PUERTO
+465
+
+
+Contraseña 
+vtxoyxhapqxryzmo
+
+
+Correo
+miscitasclini@gmail.com

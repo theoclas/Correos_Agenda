@@ -3,7 +3,7 @@
 // Correo() ;
 
 
-function Correo(Fecha, Hora, Paciente, Profecional, mail ) {
+function Correo(Fecha, Hora, Paciente, Profecional, mail, TipoCorreo) {
     const nodemailer = require('nodemailer');
 
     var transporter = nodemailer.createTransport({
@@ -18,6 +18,27 @@ function Correo(Fecha, Hora, Paciente, Profecional, mail ) {
             pass: '1998Ceere*'
         }
     });
+    Titulo = {
+        1: 'Recordatorio de Cita Médica',
+        2: 'Recordatorio de Cita Médica',
+        3: 'Cancelación de Cita Médica'
+    }
+    Colores = {
+        1: '#3a78c3',
+        2: '#ff8f00',
+        3: '#e57373'
+    }
+    Texto = {
+        1: 'Te recordamos que tienes una cita programada con nosotros:',
+        2: 'Se realizó una modificación a tu cita programada, Recuerda Validar Fecha, Hora, y Profesional:',
+        3: 'Te informamos que tu cita médica ha sido cancelada:'
+    }
+    TextoFin = {
+        1: 'Por favor, llega 10 minutos antes de tu cita. Si necesitas cancelar o reprogramar, contáctanos con antelación.',
+        2: 'Por favor, llega 10 minutos antes de tu cita. Si necesitas cancelar o reprogramar, contáctanos con antelación.',
+        3: 'Si necesitas programar una nueva cita, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte.'
+    }
+
 
     var ContenidoHTMLDelCorreo = `
     <!DOCTYPE html>
@@ -66,7 +87,7 @@ function Correo(Fecha, Hora, Paciente, Profecional, mail ) {
            z-index: 1; /* Asegura que el texto esté por encima del fondo */
        }
        .header {
-           background-color: #3a78c3;
+           background-color: ${Colores[TipoCorreo]};
            color: #ffffff;
            text-align: center;
            padding: 15px;
@@ -80,7 +101,7 @@ function Correo(Fecha, Hora, Paciente, Profecional, mail ) {
            background-color: rgba(255, 255, 255, 0.9); /* Fondo sólido con transparencia */
        }
        .body h2 {
-           color: #3a78c3;
+           color: ${Colores[TipoCorreo]};
            font-size: 16px;
            margin: 10px 0;
        }
@@ -94,7 +115,7 @@ function Correo(Fecha, Hora, Paciente, Profecional, mail ) {
        }
        .details span {
            font-weight: bold;
-           color: #3a78c3;
+           color: ${Colores[TipoCorreo]};
        }
        .footer {
            background-color: #f0f4f8;
@@ -104,7 +125,7 @@ function Correo(Fecha, Hora, Paciente, Profecional, mail ) {
            color: #666666;
        }
        .footer a {
-           color: #3a78c3;
+           color: ${Colores[TipoCorreo]};
            text-decoration: none;
        }
    </style>
@@ -112,28 +133,28 @@ function Correo(Fecha, Hora, Paciente, Profecional, mail ) {
 <body>
    <div class="container">
        <div class="header">
-           Recordatorio de Cita Médica
+            ${Titulo[TipoCorreo]}
        </div>
        <div class="body">
            <h2>Hola ${Paciente}</h2>
-           <p>Te recordamos que tienes una cita programada con nosotros:</p>
+           <p>${Texto[TipoCorreo]}</p>
            <div class="details">
                <p><span>Fecha:</span> ${Fecha}</p>
                <p><span>Hora:</span> ${Hora}</p>
                <p><span>Doctor:</span> ${Profecional}</p>
                <p><span>Ubicación:</span> Diagonal 75E # 33a -160 Laureles Medellín - Antioquia</p>
            </div>
-           <p>Por favor, llega 10 minutos antes de tu cita. Si necesitas cancelar o reprogramar, contáctanos con antelación.</p>
+           <p>${TextoFin[TipoCorreo]}</p>
        </div>
        <div class="footer">
            <p>Gracias por confiar en nosotros.</p>
-           <p><a href="tel:+1234567890">Llámanos</a> | <a href="mailto:contacto@clinica.com">contacto@clinica.com</a></p>
+           <p><a>+57(604)3225262</a> |  <a href="tel:+57(604)3225262">Llámanos</a> </p>
        </div>
    </div>
 </body>
 </html>
 `;
-console.log(mail);
+    console.log(mail);
     var mailOptions = {
         from: '"Clínica Colombiana de Implantes Dentales" <correomineria@ceere.net>',
         to: mail,

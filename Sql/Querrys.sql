@@ -53,32 +53,55 @@ END
 
 --  OJO FERCHO ESTE TRIGER NO FUNCIONA POR QUE CADA QUE HACES UNA CITA NUEVA CAMBIA EL ESTADO A 0
 -- DEBER BUSCAR COMO HACER PARA IDENTIFICAR CUANDO SE INSERTO UNA CITA Y CUANDO SE ACTUALIZO 
-
+--Recuerda quuitar el filtro para que se envie solo las del paciente administrador ceere 
 CREATE VIEW [dbo].[Cnsta API CompromisoVI Insertador]
 AS
 SELECT        dbo.CompromisoVI.[Id CompromisoVI] AS IdCompromisoVI, dbo.CompromisoVI.EstadoEnviado, dbo.Entidad.[Documento Entidad] AS DocumentoPaciente, dbo.Entidad.[Nombre Completo Entidad] AS NombrePaciente, 
                          Entidad_1.[Documento Entidad] AS DocumentoProfesional, Entidad_1.[Nombre Completo Entidad] AS NombreProfesional, Entidad_1.[Observaciones Entidad] AS AliasProfesional, 
                          FORMAT(dbo.CompromisoVI.[Fecha Inicio CompromisoVI], 'yyyy/MM/dd') AS FechaInicio, FORMAT(dbo.CompromisoVI.[Fecha Fin CompromisoVI], 'yyyy/MM/dd') AS FechaFin, 
                          FORMAT(CAST(dbo.CompromisoVI.[Hora Inicio CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraInicio, FORMAT(CAST(dbo.CompromisoVI.[Hora Fin CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraFin, 
-                         dbo.EntidadII.[E-mail Nro 1 EntidadII] AS CorreoPaciente
+                         dbo.EntidadII.[E-mail Nro 1 EntidadII] AS CorreoPaciente, dbo.CompromisoVI.[Id Estado]
 FROM            dbo.CompromisoVI INNER JOIN
                          dbo.Entidad AS Entidad_1 ON dbo.CompromisoVI.[Entidad Responsable] = Entidad_1.[Documento Entidad] INNER JOIN
                          dbo.Entidad ON dbo.CompromisoVI.[Entidad Atendida] = dbo.Entidad.[Documento Entidad] INNER JOIN
                          dbo.EntidadII ON dbo.CompromisoVI.[Entidad Atendida] = dbo.EntidadII.[Documento Entidad]
-WHERE        (dbo.CompromisoVI.EstadoEnviado = 2) AND (dbo.CompromisoVI.[Fecha Inicio CompromisoVI] > GETDATE() - 1)
+WHERE        (dbo.CompromisoVI.EstadoEnviado = 2) AND (dbo.CompromisoVI.[Fecha Inicio CompromisoVI] > GETDATE() - 1) AND (dbo.Entidad.[Documento Entidad] = N'70123456') AND (dbo.CompromisoVI.[Id Estado] = 58)
 GO
 
 
 
-
-
-
-CREATE VIEW [dbo].[Cnsta API CompromisoVI Actualizador]
+CREATE VIEW [dbo].[Cnsta API CompromisoVI Actualizados]
 AS
-SELECT        [Id CompromisoVI] AS IdCompromisoVI, EstadoEnviado
-FROM            dbo.CompromisoVI
-WHERE        (EstadoEnviado >= 4)
+SELECT        dbo.CompromisoVI.[Id CompromisoVI] AS IdCompromisoVI, dbo.CompromisoVI.EstadoEnviado, dbo.Entidad.[Documento Entidad] AS DocumentoPaciente, dbo.Entidad.[Nombre Completo Entidad] AS NombrePaciente, 
+                         Entidad_1.[Documento Entidad] AS DocumentoProfesional, Entidad_1.[Nombre Completo Entidad] AS NombreProfesional, Entidad_1.[Observaciones Entidad] AS AliasProfesional, 
+                         FORMAT(dbo.CompromisoVI.[Fecha Inicio CompromisoVI], 'yyyy/MM/dd') AS FechaInicio, FORMAT(dbo.CompromisoVI.[Fecha Fin CompromisoVI], 'yyyy/MM/dd') AS FechaFin, 
+                         FORMAT(CAST(dbo.CompromisoVI.[Hora Inicio CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraInicio, FORMAT(CAST(dbo.CompromisoVI.[Hora Fin CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraFin, 
+                         dbo.EntidadII.[E-mail Nro 1 EntidadII] AS CorreoPaciente, dbo.CompromisoVI.[Id Estado]
+FROM            dbo.CompromisoVI INNER JOIN
+                         dbo.Entidad AS Entidad_1 ON dbo.CompromisoVI.[Entidad Responsable] = Entidad_1.[Documento Entidad] INNER JOIN
+                         dbo.Entidad ON dbo.CompromisoVI.[Entidad Atendida] = dbo.Entidad.[Documento Entidad] INNER JOIN
+                         dbo.EntidadII ON dbo.CompromisoVI.[Entidad Atendida] = dbo.EntidadII.[Documento Entidad]
+WHERE        (dbo.CompromisoVI.EstadoEnviado >= 5) AND (dbo.CompromisoVI.[Fecha Inicio CompromisoVI] > GETDATE() - 1) AND (dbo.CompromisoVI.[Id Estado] = 58)
 GO
 
 
+
+
+
+
+CREATE VIEW [dbo].[Cnsta API CompromisoVI Cancelados]
+AS
+SELECT        dbo.CompromisoVI.[Id CompromisoVI] AS IdCompromisoVI, dbo.CompromisoVI.EstadoEnviado, dbo.Entidad.[Documento Entidad] AS DocumentoPaciente, dbo.Entidad.[Nombre Completo Entidad] AS NombrePaciente, 
+                         Entidad_1.[Documento Entidad] AS DocumentoProfesional, Entidad_1.[Nombre Completo Entidad] AS NombreProfesional, Entidad_1.[Observaciones Entidad] AS AliasProfesional, 
+                         FORMAT(dbo.CompromisoVI.[Fecha Inicio CompromisoVI], 'yyyy/MM/dd') AS FechaInicio, FORMAT(dbo.CompromisoVI.[Fecha Fin CompromisoVI], 'yyyy/MM/dd') AS FechaFin, 
+                         FORMAT(CAST(dbo.CompromisoVI.[Hora Inicio CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraInicio, FORMAT(CAST(dbo.CompromisoVI.[Hora Fin CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraFin, 
+                         dbo.EntidadII.[E-mail Nro 1 EntidadII] AS CorreoPaciente, dbo.CompromisoVI.[Id Estado]
+FROM            dbo.CompromisoVI INNER JOIN
+                         dbo.Entidad AS Entidad_1 ON dbo.CompromisoVI.[Entidad Responsable] = Entidad_1.[Documento Entidad] INNER JOIN
+                         dbo.Entidad ON dbo.CompromisoVI.[Entidad Atendida] = dbo.Entidad.[Documento Entidad] INNER JOIN
+                         dbo.EntidadII ON dbo.CompromisoVI.[Entidad Atendida] = dbo.EntidadII.[Documento Entidad]
+WHERE        (dbo.CompromisoVI.EstadoEnviado >= 4) AND (dbo.CompromisoVI.[Fecha Inicio CompromisoVI] > GETDATE() - 1) AND (dbo.CompromisoVI.[Id Estado] = 60 OR
+                         dbo.CompromisoVI.[Id Estado] = 61 OR
+                         dbo.CompromisoVI.[Id Estado] = 64)
+GO
 
