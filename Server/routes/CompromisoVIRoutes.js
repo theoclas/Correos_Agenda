@@ -273,6 +273,65 @@ FROM             [Cnsta API CompromisoVI Cancelados]`,
 });
 
 
+router.get('/ConsultarCorreoEnvio', async (req, res) => {
+
+    try {
+        const request = new Request(
+            `SELECT        TOP (1) IdMailConfiguración, DocumentoEmpresa, Password, EmailAddress, SMTPServer, SMTPServerPort
+                FROM            [Cnsta API Correos Por Empresa]`,
+            (err) => {
+                if (err) {
+                    console.error(`Error de ejecución: ${err}`);
+                    // En caso de error, enviamos una respuesta y salimos de la función
+                    if (!res.headersSent) {
+                        res.status(500).send('Error interno del servidor');
+                    }
+                }
+            }
+        );
+
+        const resultados = [];
+
+        request.on('row', (columns) => {
+            const hc = {
+                IdMailConfiguración: columns[0].value,
+                DocumentoEmpresa: columns[1].value,
+                Password: columns[2].value,
+                EmailAddress: columns[3].value,
+                SMTPServer: columns[4].value,
+                SMTPServerPort: columns[5].value
+            };
+            resultados.push(hc);
+        });
+
+        request.on('requestCompleted', () => {
+            console.log('Resultados de la consulta (Correo Empresa Envio API):');
+            // console.log(resultados);
+            if (!res.headersSent) {
+                res.json(resultados);  // Envía la respuesta solo si no se ha enviado antes
+                // res.status(200).send("holas")
+            }
+        });
+
+        request.on('error', (err) => {
+            console.error('Error en la consulta:', err);
+            if (!res.headersSent) {
+                res.status(500).send('Error interno del servidor');
+            }
+        });
+
+        connection.execSql(request);
+    } catch (error) {
+        console.error('Error en la conexión o en la ejecución de la consulta:', error);
+        if (!res.headersSent) {
+            res.status(500).send('Error interno del servidor');
+        }
+    }
+});
+
+
+
+
 
 
 

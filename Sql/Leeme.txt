@@ -1,0 +1,1 @@
+Para desactivar la configuracion especial que realiza el emvio de correos por la aplicacion CeereSio debe dirigirte a la tabla de [Configuraciones Especiales] y buscar la cinfiguracion especial llamada ("RecordatorioCitaDirecto") y en la columna [Valor General Configuraciones Especiales] Colocarla  en 0 

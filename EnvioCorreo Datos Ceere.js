@@ -7,18 +7,17 @@ function Correo(Fecha, Hora, Paciente, Profecional, mail, TipoCorreo) {
     const nodemailer = require('nodemailer');
 
     var transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com", // hostname
+        host: "mail.ceere.net", // hostname
         secureConnection: false,
         port: 465,
         tls: {
             ciphers: 'SSLv3'
         },
         auth: {
-            user: 'miscitasclini@gmail.com',
-            pass: 'vtxoyxhapqxryzmo'
+            user: 'correomineria@ceere.net',
+            pass: '1998Ceere*'
         }
     });
-    
     Titulo = {
         1: 'Recordatorio de Cita Médica',
         2: 'Recordatorio de Cita Médica',
@@ -157,7 +156,7 @@ function Correo(Fecha, Hora, Paciente, Profecional, mail, TipoCorreo) {
 `;
     console.log(mail);
     var mailOptions = {
-        from: '"Clínica Colombiana de Implantes Dentales" <miscitasclini@gmail.com>',
+        from: '"Clínica Colombiana de Implantes Dentales" <correomineria@ceere.net>',
         to: mail,
         subject: 'Recordatorio de citas',
         html: ContenidoHTMLDelCorreo

@@ -26,13 +26,15 @@ const port = 3004;
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
 
+
+
     setInterval(async () => {
-        const CompromisoVi = await fetch(`http://${servidor}:3004/api/CompromisosInsertados`);
-        const Insertados = await CompromisoVi.json();
+        let CompromisoVi = await fetch(`http://${servidor}:3004/api/CompromisosInsertados`);
+        let Insertados = await CompromisoVi.json();
         console.log(Insertados[0]);
         for (let i = 0; i < Insertados.length; i++) {
             try {
-                Correo(Insertados[i].FechaInicio, Insertados[i].HoraInicio, Insertados[i].NombrePaciente, Insertados[i].NombreProfesional, Insertados[i].CorreoPaciente, 1  );
+                Correo(Insertados[i].FechaInicio, Insertados[i].HoraInicio, Insertados[i].NombrePaciente, Insertados[i].NombreProfesional, Insertados[i].CorreoPaciente, 1);
                 console.log(Insertados[i].IdCompromisoVI);
                 const ActualizarCompromisoInsertado = await fetch(`http://${servidor}:3004/api/ActualizarEstadoEnviado/${Insertados[i].IdCompromisoVI}`,
                     {
@@ -43,16 +45,16 @@ app.listen(port, () => {
                 const respuestaActualizar = await ActualizarCompromisoInsertado.json();
                 console.log(respuestaActualizar);
             } catch (error) {
-                
+
             }
         }
-        
-        const CompromisoViActualizados = await fetch(`http://${servidor}:3004/api/CompromisosActualizados`);
-        const Actualizados = await CompromisoViActualizados.json();
+
+        let CompromisoViActualizados = await fetch(`http://${servidor}:3004/api/CompromisosActualizados`);
+        let Actualizados = await CompromisoViActualizados.json();
         console.log(Actualizados[0]);
         for (let i = 0; i < Actualizados.length; i++) {
             try {
-                Correo(Actualizados[i].FechaInicio, Actualizados[i].HoraInicio, Actualizados[i].NombrePaciente, Actualizados[i].NombreProfesional, Actualizados[i].CorreoPaciente, 2  );
+                Correo(Actualizados[i].FechaInicio, Actualizados[i].HoraInicio, Actualizados[i].NombrePaciente, Actualizados[i].NombreProfesional, Actualizados[i].CorreoPaciente, 2);
                 console.log(Actualizados[i].IdCompromisoVI);
                 const ActualizarCompromisoInsertado = await fetch(`http://${servidor}:3004/api/ActualizarEstadoEnviado/${Actualizados[i].IdCompromisoVI}`,
                     {
@@ -63,17 +65,17 @@ app.listen(port, () => {
                 const respuestaActualizar = await ActualizarCompromisoInsertado.json();
                 console.log(respuestaActualizar);
             } catch (error) {
-                
+
             }
         }
 
 
-        const CompromisoViCacelados = await fetch(`http://${servidor}:3004/api/CompromisosCancelados`);
-        const Cancelados = await CompromisoViCacelados.json();
+        let CompromisoViCacelados = await fetch(`http://${servidor}:3004/api/CompromisosCancelados`);
+        let Cancelados = await CompromisoViCacelados.json();
         console.log(Cancelados[0]);
         for (let i = 0; i < Cancelados.length; i++) {
             try {
-                Correo(Cancelados[i].FechaInicio, Cancelados[i].HoraInicio, Cancelados[i].NombrePaciente, Cancelados[i].NombreProfesional, Cancelados[i].CorreoPaciente, 3  );
+                Correo(Cancelados[i].FechaInicio, Cancelados[i].HoraInicio, Cancelados[i].NombrePaciente, Cancelados[i].NombreProfesional, Cancelados[i].CorreoPaciente, 3);
                 console.log(Cancelados[i].IdCompromisoVI);
                 const ActualizarCompromisoInsertado = await fetch(`http://${servidor}:3004/api/ActualizarEstadoEnviado/${Cancelados[i].IdCompromisoVI}`,
                     {
@@ -84,12 +86,13 @@ app.listen(port, () => {
                 const respuestaActualizar = await ActualizarCompromisoInsertado.json();
                 console.log(respuestaActualizar);
             } catch (error) {
-                
+
             }
         }
-        
+
 
     }, 10000);
+
 });
 
 
