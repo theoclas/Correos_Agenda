@@ -58,7 +58,7 @@ CREATE VIEW [dbo].[Cnsta API CompromisoVI Insertador]
 AS
 SELECT        dbo.CompromisoVI.[Id CompromisoVI] AS IdCompromisoVI, dbo.CompromisoVI.EstadoEnviado, dbo.Entidad.[Documento Entidad] AS DocumentoPaciente, dbo.Entidad.[Nombre Completo Entidad] AS NombrePaciente, 
                          Entidad_1.[Documento Entidad] AS DocumentoProfesional, Entidad_1.[Nombre Completo Entidad] AS NombreProfesional, Entidad_1.[Observaciones Entidad] AS AliasProfesional, 
-                         FORMAT(dbo.CompromisoVI.[Fecha Inicio CompromisoVI], 'yyyy/MM/dd') AS FechaInicio, FORMAT(dbo.CompromisoVI.[Fecha Fin CompromisoVI], 'yyyy/MM/dd') AS FechaFin, 
+                         FORMAT(dbo.CompromisoVI.[Fecha Inicio CompromisoVI], 'dd/MM/yyyy') AS FechaInicio, FORMAT(dbo.CompromisoVI.[Fecha Fin CompromisoVI], 'dd/MM/yyyy') AS FechaFin, 
                          FORMAT(CAST(dbo.CompromisoVI.[Hora Inicio CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraInicio, FORMAT(CAST(dbo.CompromisoVI.[Hora Fin CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraFin, 
                          dbo.EntidadII.[E-mail Nro 1 EntidadII] AS CorreoPaciente, dbo.CompromisoVI.[Id Estado]
 FROM            dbo.CompromisoVI INNER JOIN
@@ -74,7 +74,7 @@ CREATE VIEW [dbo].[Cnsta API CompromisoVI Actualizados]
 AS
 SELECT        dbo.CompromisoVI.[Id CompromisoVI] AS IdCompromisoVI, dbo.CompromisoVI.EstadoEnviado, dbo.Entidad.[Documento Entidad] AS DocumentoPaciente, dbo.Entidad.[Nombre Completo Entidad] AS NombrePaciente, 
                          Entidad_1.[Documento Entidad] AS DocumentoProfesional, Entidad_1.[Nombre Completo Entidad] AS NombreProfesional, Entidad_1.[Observaciones Entidad] AS AliasProfesional, 
-                         FORMAT(dbo.CompromisoVI.[Fecha Inicio CompromisoVI], 'yyyy/MM/dd') AS FechaInicio, FORMAT(dbo.CompromisoVI.[Fecha Fin CompromisoVI], 'yyyy/MM/dd') AS FechaFin, 
+                         FORMAT(dbo.CompromisoVI.[Fecha Inicio CompromisoVI], 'dd/MM/yyyy') AS FechaInicio, FORMAT(dbo.CompromisoVI.[Fecha Fin CompromisoVI], 'dd/MM/yyyy') AS FechaFin, 
                          FORMAT(CAST(dbo.CompromisoVI.[Hora Inicio CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraInicio, FORMAT(CAST(dbo.CompromisoVI.[Hora Fin CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraFin, 
                          dbo.EntidadII.[E-mail Nro 1 EntidadII] AS CorreoPaciente, dbo.CompromisoVI.[Id Estado]
 FROM            dbo.CompromisoVI INNER JOIN
@@ -93,7 +93,7 @@ CREATE VIEW [dbo].[Cnsta API CompromisoVI Cancelados]
 AS
 SELECT        dbo.CompromisoVI.[Id CompromisoVI] AS IdCompromisoVI, dbo.CompromisoVI.EstadoEnviado, dbo.Entidad.[Documento Entidad] AS DocumentoPaciente, dbo.Entidad.[Nombre Completo Entidad] AS NombrePaciente, 
                          Entidad_1.[Documento Entidad] AS DocumentoProfesional, Entidad_1.[Nombre Completo Entidad] AS NombreProfesional, Entidad_1.[Observaciones Entidad] AS AliasProfesional, 
-                         FORMAT(dbo.CompromisoVI.[Fecha Inicio CompromisoVI], 'yyyy/MM/dd') AS FechaInicio, FORMAT(dbo.CompromisoVI.[Fecha Fin CompromisoVI], 'yyyy/MM/dd') AS FechaFin, 
+                         FORMAT(dbo.CompromisoVI.[Fecha Inicio CompromisoVI], 'dd/MM/yyyy') AS FechaInicio, FORMAT(dbo.CompromisoVI.[Fecha Fin CompromisoVI], 'dd/MM/yyyy') AS FechaFin, 
                          FORMAT(CAST(dbo.CompromisoVI.[Hora Inicio CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraInicio, FORMAT(CAST(dbo.CompromisoVI.[Hora Fin CompromisoVI] AS DATETIME), 'hh:mm tt') AS HoraFin, 
                          dbo.EntidadII.[E-mail Nro 1 EntidadII] AS CorreoPaciente, dbo.CompromisoVI.[Id Estado]
 FROM            dbo.CompromisoVI INNER JOIN

@@ -17,7 +17,7 @@ router.get('/pruebaHC', async (req, res) => {
                     console.error(`Error de ejecución: ${err}`);
                     // En caso de error, enviamos una respuesta y salimos de la función
                     if (!res.headersSent) {
-                        res.status(500).send('Error interno del servidor');
+                        res.status(500).json('Error interno del servidor');
                     }
                 }
             }
@@ -39,14 +39,14 @@ router.get('/pruebaHC', async (req, res) => {
             console.log(resultados);
             if (!res.headersSent) {
                 res.json(resultados);  // Envía la respuesta solo si no se ha enviado antes
-                // res.status(200).send("holas")
+                // res.status(200).json("holas")
             }
         });
 
         request.on('error', (err) => {
             console.error('Error en la consulta:', err);
             if (!res.headersSent) {
-                res.status(500).send('Error interno del servidor');
+                res.status(500).json('Error interno del servidor');
             }
         });
 
@@ -54,7 +54,7 @@ router.get('/pruebaHC', async (req, res) => {
     } catch (error) {
         console.error('Error en la conexión o en la ejecución de la consulta:', error);
         if (!res.headersSent) {
-            res.status(500).send('Error interno del servidor');
+            res.status(500).json('Error interno del servidor');
         }
     }
 });
@@ -70,7 +70,7 @@ FROM            [Cnsta API CompromisoVI Insertador]`,
                     console.error(`Error de ejecución: ${err}`);
                     // En caso de error, enviamos una respuesta y salimos de la función
                     if (!res.headersSent) {
-                        res.status(500).send('Error interno del servidor');
+                        res.status(500).json('Error interno del servidor');
                     }
                 }
             }
@@ -101,14 +101,14 @@ FROM            [Cnsta API CompromisoVI Insertador]`,
             // console.log(resultados);
             if (!res.headersSent) {
                 res.json(resultados);  // Envía la respuesta solo si no se ha enviado antes
-                // res.status(200).send("holas")
+                // res.status(200).json("holas")
             }
         });
 
         request.on('error', (err) => {
             console.error('Error en la consulta:', err);
             if (!res.headersSent) {
-                res.status(500).send('Error interno del servidor');
+                res.status(500).json('Error interno del servidor');
             }
         });
 
@@ -116,7 +116,7 @@ FROM            [Cnsta API CompromisoVI Insertador]`,
     } catch (error) {
         console.error('Error en la conexión o en la ejecución de la consulta:', error);
         if (!res.headersSent) {
-            res.status(500).send('Error interno del servidor');
+            res.status(500).json('Error interno del servidor');
         }
     }
 });
@@ -157,7 +157,7 @@ FROM            [Cnsta API CompromisoVI Actualizados]`,
                     console.error(`Error de ejecución: ${err}`);
                     // En caso de error, enviamos una respuesta y salimos de la función
                     if (!res.headersSent) {
-                        res.status(500).send('Error interno del servidor');
+                        res.status(500).json('Error interno del servidor');
                     }
                 }
             }
@@ -188,14 +188,14 @@ FROM            [Cnsta API CompromisoVI Actualizados]`,
             // console.log(resultados);
             if (!res.headersSent) {
                 res.json(resultados);  // Envía la respuesta solo si no se ha enviado antes
-                // res.status(200).send("holas")
+                // res.status(200).json("holas")
             }
         });
 
         request.on('error', (err) => {
             console.error('Error en la consulta:', err);
             if (!res.headersSent) {
-                res.status(500).send('Error interno del servidor');
+                res.status(500).json('Error interno del servidor');
             }
         });
 
@@ -203,7 +203,7 @@ FROM            [Cnsta API CompromisoVI Actualizados]`,
     } catch (error) {
         console.error('Error en la conexión o en la ejecución de la consulta:', error);
         if (!res.headersSent) {
-            res.status(500).send('Error interno del servidor');
+            res.status(500).json('Error interno del servidor');
         }
     }
 });
@@ -221,7 +221,7 @@ FROM             [Cnsta API CompromisoVI Cancelados]`,
                     console.error(`Error de ejecución: ${err}`);
                     // En caso de error, enviamos una respuesta y salimos de la función
                     if (!res.headersSent) {
-                        res.status(500).send('Error interno del servidor');
+                        res.status(500).json('Error interno del servidor');
                     }
                 }
             }
@@ -252,14 +252,14 @@ FROM             [Cnsta API CompromisoVI Cancelados]`,
             // console.log(resultados);
             if (!res.headersSent) {
                 res.json(resultados);  // Envía la respuesta solo si no se ha enviado antes
-                // res.status(200).send("holas")
+                // res.status(200).json("holas")
             }
         });
 
         request.on('error', (err) => {
             console.error('Error en la consulta:', err);
             if (!res.headersSent) {
-                res.status(500).send('Error interno del servidor');
+                res.status(500).json('Error interno del servidor');
             }
         });
 
@@ -267,7 +267,7 @@ FROM             [Cnsta API CompromisoVI Cancelados]`,
     } catch (error) {
         console.error('Error en la conexión o en la ejecución de la consulta:', error);
         if (!res.headersSent) {
-            res.status(500).send('Error interno del servidor');
+            res.status(500).json('Error interno del servidor');
         }
     }
 });
@@ -284,7 +284,7 @@ router.get('/ConsultarCorreoEnvio', async (req, res) => {
                     console.error(`Error de ejecución: ${err}`);
                     // En caso de error, enviamos una respuesta y salimos de la función
                     if (!res.headersSent) {
-                        res.status(500).send('Error interno del servidor');
+                        res.status(500).json('Error interno del servidor');
                     }
                 }
             }
@@ -309,14 +309,14 @@ router.get('/ConsultarCorreoEnvio', async (req, res) => {
             // console.log(resultados);
             if (!res.headersSent) {
                 res.json(resultados);  // Envía la respuesta solo si no se ha enviado antes
-                // res.status(200).send("holas")
+                // res.status(200).json("holas")
             }
         });
 
         request.on('error', (err) => {
             console.error('Error en la consulta:', err);
             if (!res.headersSent) {
-                res.status(500).send('Error interno del servidor');
+                res.status(500).json('Error interno del servidor');
             }
         });
 
@@ -324,30 +324,8 @@ router.get('/ConsultarCorreoEnvio', async (req, res) => {
     } catch (error) {
         console.error('Error en la conexión o en la ejecución de la consulta:', error);
         if (!res.headersSent) {
-            res.status(500).send('Error interno del servidor');
+            res.status(500).json('Error interno del servidor');
         }
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router;
-
-
-
